@@ -1,0 +1,224 @@
+:root {
+  --color-bg: #000000;
+  --color-surface: #000000;
+  --color-surface-hover: #564D4D;
+  --color-accent: #E50914;
+  --color-accent-hover: #B20710;
+  --color-text: #1a1a1a;
+  --color-text-muted: #babcbe;
+  --color-border: #95070e;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+  color: var(--color-text);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-surface);
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(22, 33, 45, 0.65), rgba(15, 23, 31, 0.85)),
+    url("https://images.unsplash.com/photo-1628432136678-43ff9be34064?q=80&w=963&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: 0% 21.5%;
+  z-index: -1;
+}
+
+#title {
+  color: #ffffff;
+  font-size: 3rem;
+  margin: 0;
+}
+
+#subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.25rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.addSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+#addInput {
+  padding: 1rem 1.25rem;
+  color: var(--color-text);
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  margin-right: 1rem;
+  width: 72ch;
+}
+#addInput::placeholder {
+  color: var(--color-text-muted);
+  font-family: "Karla", sans-serif;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+#addButton {
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 900;
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+#addInput,
+#addButton {
+  box-sizing: border-box;
+  height: 3rem;
+}
+
+#addButton:hover {
+  background-color: var(--color-accent-hover);
+}
+
+#addInput:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent-hover);
+}
+
+#addButtonIcon:hover {
+  color: var(--color-text-muted);
+}
+
+.watchlistPanel {
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  width: 100%;
+  max-width: 720px;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 1.2rem;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0 0 0.5rem 0;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab.active {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+#watchlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#watchlist:empty::after {
+  content: "Nothing here yet, add some titles to your watchlist!";
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.watchlistItem {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #f4f6f8;
+  padding: 0.8rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+}
+
+.itemCheckbox {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.itemTitle {
+  flex: 1;
+}
+
+.watchlistItem:has(.itemCheckbox:checked) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.watchlistItem:has(.itemCheckbox:checked) .itemTitle {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.itemDelete {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+  flex-shrink: 0;
+}
+
+.itemDelete:hover {
+  color: #ffffff;
+}

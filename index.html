@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Watchlist Tracker MVP</title>
+</head>
+<body>
+    <header>
+        <h1 id="title">Watchlist Tracker 🍿</h1>
+        <p id="subtitle">Simple tracker for managing my TV and movie watchlists</p>
+    </header>
+
+    <main>
+        <div class="addSection">
+            <input type="text" id="addInput" placeholder="Add a movie or TV show by typing its title! 🎦" />
+            <button id="addButton"><span id="addButtonIcon">+ Add</span></button>
+        </div>
+        <div class="watchlistPanel">
+            <div class="tabs">
+                <button class="tab active" data-tab="all">All movies & TV shows 👀</button>
+                <button class="tab" data-tab="toWatch">Yet to watch ⏩</button>
+                <button class="tab" data-tab="watched">Already watched ✅</button>
+            </div>
+            <ul id="watchlist">
+                <li class="watchlistItem" data-status="toWatch">
+                    <input type="checkbox" class="itemCheckbox"/>
+                    <span class="itemTitle">The Odyssey</span>
+                    <button class="itemDelete" aria-label="Remove">&times;</button>
+                </li>
+                <li class="watchlistItem" data-status="toWatch">
+                    <input type="checkbox" class="itemCheckbox"/>
+                    <span class="itemTitle">Sinners</span>
+                    <button class="itemDelete" aria-label="Remove">&times;</button>
+                </li>
+                <li class="watchlistItem" data-status="toWatch">
+                    <input type="checkbox" class="itemCheckbox"/>
+                    <span class="itemTitle">Whiplash</span>
+                    <button class="itemDelete" aria-label="Remove">&times;</button>
+                </li>
+                <li class="watchlistItem" data-status="toWatch">
+                    <input type="checkbox" class="itemCheckbox"/>
+                    <span class="itemTitle">Oppenheimer</span>
+                    <button class="itemDelete" aria-label="Remove">&times;</button>
+                </li>
+                <li class="watchlistItem" data-status="toWatch">
+                    <input type="checkbox" class="itemCheckbox"/>
+                    <span class="itemTitle">One Battle After Another</span>
+                    <button class="itemDelete" aria-label="Remove">&times;</button>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+
+</body>
+</html>

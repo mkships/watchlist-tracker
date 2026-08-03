@@ -3,7 +3,22 @@ const addButton = document.getElementById('addButton');
 const watchList = document.getElementById('watchList');
 const tabs = document.querySelectorAll('.tab');
 
-let items = []; // Array to store the watch list items {id, title, status}
+const STORAGE_KEY = 'watchlistItems';
+
+// Load items from localStorage, falling back to an empty list
+
+function loadItems() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+}
+
+// Save the current items array to localStorage
+
+function saveItems() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+}
+
+let items = loadItems(); // Array to store the watch list items {id, title, status}
 let activeTab = 'all'; // 'all' | 'toWatch' | 'watched'
 
 // Render function to display the items in the watch list
@@ -49,6 +64,7 @@ function renderWatchList() {
 }
 
 // Add item to the watch list
+
 function handleAddItem() {
     const title = userInput.value.trim();
     if (title) {
@@ -58,14 +74,17 @@ function handleAddItem() {
             status: 'toWatch'
         };
         items.push(newItem);
+        saveItems();
         renderWatchList();
         userInput.value = ''; // Clear input field
     }
 };
 
 // Delete item from the watch list
+
 function handleDeleteItem(id) {
     items = items.filter(item => item.id !== id);
+    saveItems();
     renderWatchList();
 }
 
@@ -79,6 +98,7 @@ userInput.addEventListener('keypress', (event) => {
 });
 
 // Add event listeners for delete buttons and checkboxes using event delegation
+
 watchList.addEventListener('click', (event) => {
     if (event.target.classList.contains('itemDelete')) {
         const listItem = event.target.closest('.watchListItem');
@@ -94,12 +114,14 @@ watchList.addEventListener('change', (event) => {
         const item = items.find(item => item.id === itemId);
         if (item) {
             item.status = event.target.checked ? 'watched' : 'toWatch';
+            saveItems();
             renderWatchList();
         }
     }
 });
 
 // Switch tabs
+
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         activeTab = tab.dataset.tab;
@@ -112,6 +134,3 @@ tabs.forEach(tab => {
 });
 
 renderWatchList(); // Initial render
-
-
-
